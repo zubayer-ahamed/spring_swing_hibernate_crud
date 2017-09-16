@@ -38,5 +38,6 @@
         <prop key="hibernate.show_sql">true</prop>
     </util:properties>
     
+    <bean id="product" class="com.coderslab.entity.Product"></bean>
     
 </beans>

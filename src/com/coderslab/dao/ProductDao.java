@@ -1,4 +1,3 @@
-
 package com.coderslab.dao;
 
 import com.coderslab.entity.Product;
@@ -11,14 +10,33 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 @Transactional
 public class ProductDao {
-    
+
     @Autowired
     private SessionFactory sessionFactory;
-    
-    public List<Product> getAllProduct(){
-        
+
+    public List<Product> getAllProduct() {
+
         return sessionFactory.getCurrentSession().createQuery("from Product").list();
-        
+
     }
-    
+
+    public Product getProduct(int id) {
+        return (Product) sessionFactory.getCurrentSession().get(Product.class, id);
+    }
+
+    public boolean saveProduct(Product product) {
+        sessionFactory.getCurrentSession().save(product);
+        return true;
+    }
+
+    public boolean updateProduct(Product product) {
+        sessionFactory.getCurrentSession().update(product);
+        return true;
+    }
+
+    public boolean deleteProduct(Product product) {
+        sessionFactory.getCurrentSession().delete(product);
+        return true;
+    }
+
 }

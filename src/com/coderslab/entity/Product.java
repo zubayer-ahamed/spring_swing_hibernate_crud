@@ -2,6 +2,8 @@ package com.coderslab.entity;
 // Generated Sep 16, 2017 5:33:43 PM by Hibernate Tools 4.3.1
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
@@ -11,12 +13,20 @@ import javax.persistence.Id;
 public class Product implements java.io.Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer pid;
     private String pname;
     private double price;
     private int qty;
 
     public Product() {
+    }
+
+    public Product(Integer pid, String pname, double price, int qty) {
+        this.pid = pid;
+        this.pname = pname;
+        this.price = price;
+        this.qty = qty;
     }
 
     public Product(String pname, double price, int qty) {
@@ -61,7 +71,5 @@ public class Product implements java.io.Serializable {
     public String toString() {
         return "Product{" + "pid=" + pid + ", pname=" + pname + ", price=" + price + ", qty=" + qty + '}';
     }
-
-    
 
 }
